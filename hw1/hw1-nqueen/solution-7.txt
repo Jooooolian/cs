@@ -1,0 +1,29 @@
+Print chess board:
+
+   0 1 2 3 4 5 6 7
+ 0 Q . . . . . . .
+ 1 . Q . . . . . .
+ 2 . . Q . . . . .
+ 3 . . . Q . . . .
+ 4 . . . . Q . . .
+ 5 . . . . . Q . .
+ 6 . . . . . . Q .
+ 7 . . . . . . . Q
+
+Solution to the N Queen Problem? No
+
+There is at least one queen attacking other queen(s).
+  Queen (0,0) attacks queen (1,1).
+  Queen (1,1) attacks queen (0,0).
+  Queen (1,1) attacks queen (2,2).
+  Queen (2,2) attacks queen (1,1).
+  Queen (2,2) attacks queen (3,3).
+  Queen (3,3) attacks queen (2,2).
+  Queen (3,3) attacks queen (4,4).
+  Queen (4,4) attacks queen (3,3).
+  Queen (4,4) attacks queen (5,5).
+  Queen (5,5) attacks queen (4,4).
+  Queen (5,5) attacks queen (6,6).
+  Queen (6,6) attacks queen (5,5).
+  Queen (6,6) attacks queen (7,7).
+  Queen (7,7) attacks queen (6,6).

@@ -1,0 +1,11 @@
+Print chess board:
+
+   0 1 2 3
+ 0 . Q . .
+ 1 . . . Q
+ 2 Q . . .
+ 3 . . Q .
+
+Solution to the N Queen Problem? Yes
+
+There is no queen attacking other queen(s).
