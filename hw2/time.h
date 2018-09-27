@@ -1,3 +1,27 @@
+/*                                                                              
+Name: Julian Bartholomee                                                        
+Email: jbp402@psu.edu                                                           
+Due Date: September 27 2018                                                     
+Class: CMPSC 122 - Intermediate Programming Fall 2018                           
+Professor Sukmoon - T, Th: 1:35                                                 
+                                                                                
+Description:                                                                    
+This file declares all the functions implemented in the time.cxx file. 
+Included are Constructors, Destructor, Getter, Setters, and multiple overloaded operators.
+This also declares the ability to use the Time class with input/output streams.
+I did not change anything in this file except for this title block.
+
+Compile with:  g++ -ansi -pedantic -Wall *.cxx -o time                                                                
+                                                                                
+Acknowledgement:                                                                
+I used the c++ reference to familiarize myself with istream: http://www.cplusplus.com/reference/istream/istream/                        
+                                                                                
+                                                                                
+*/
+
+
+
+
 /************************************************************************
 *  CMPSC 122                                                            *
 *  Startup code for HW 2                                                *

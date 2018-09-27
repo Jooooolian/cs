@@ -1,3 +1,23 @@
+/*                                                                              
+Name: Julian Bartholomee                                                        
+Email: jbp402@psu.edu                                                           
+Due Date: September 27 2018                                                     
+Class: CMPSC 122 - Intermediate Programming Fall 2018                           
+Professor Sukmoon - T, Th: 1:35                                                 
+                                                                                
+Description:                                                                    
+This file tests all the functions declared and implemented in the Time class.
+I did not change anything in this file except for this title block.
+
+Compile with:  g++ -ansi -pedantic -Wall *.cxx -o time                                                                
+                                                                                
+Acknowledgement:                                                                
+I used the c++ reference to familiarize myself with istream: http://www.cplusplus.com/reference/istream/istream/                        
+                                                                                                                                                        
+*/
+
+
+
 /************************************************************************
 *  CMPSC 122                                                            *
 *  Startup code for HW 2                                                *
