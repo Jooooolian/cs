@@ -15,6 +15,20 @@ bool DoubleStack::IsEmpty() const
 // Implement your own member functions below.
 
 
+void Push(double elem){
+	list.append(elem);
+}
+
+double Pop(){
+	return list.pop(list.size());
+}
+
+double Top() const{
+	return list[list.size()];
+}
+
+void Clear(){
+}
 
 // Do not change the below.
 ///////////////////////////////////////////
