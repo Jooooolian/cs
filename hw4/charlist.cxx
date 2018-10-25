@@ -24,34 +24,47 @@ bool CharList::IsEmpty() const
 
     CharList::~CharList(){
     	delete [] h;
+    	//LOOP THRU DELETE ALL
     }
 
     char CharList::GetHead() const{
-    	return h;
+    	return h->value;
     }
 
     char CharList::GetTail() const{
-    	return t;
+    	return t->value;
     }
 
     void CharList::AddToHead(char v){
-    	h = CharNode(v, NULL, h);
+    	CharNode tempNode = CharNode(v, NULL, h);
+    	h = &tempNode;
     }
 
     void CharList::AddToTail(char v){
-    	t = CharNode(v, t, NULL);
+    	CharNode tempNode = CharNode(v, t, NULL);
+    	t = &tempNode;
     }
 
     bool CharList::RemoveHead(){
-		h = h.next;
-		delete [] h.prev;
-		h.prev = NULL
+		if (h != NULL){
+			h = h->next;
+			delete [] h->prev;
+			h->prev = NULL;
+			return true;
+		} else {
+			return false;
+		}
     }
 
     bool CharList::RemoveTail(){
-    	t = t.prev;
-		delete [] t.next;
-		t.next = NULL;
+    	if (t != NULL){
+			t = t->prev;
+			delete [] t->next;
+			t->next = NULL;
+			return true;
+		} else {
+			return false;
+		}
     }
 
 // Do not change the below.

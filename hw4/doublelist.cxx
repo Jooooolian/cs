@@ -21,34 +21,47 @@ bool DoubleList::IsEmpty() const
 
 DoubleList::~DoubleList(){
 	delete [] h;
+	//loop though deleting everything
 }
 
 double DoubleList::GetHead() const{
-	return h;
+	return h->value;
 }
 
 double DoubleList::GetTail() const{
-	return t;
+	return t->value;
 }
 
 void DoubleList::AddToHead(double v){
-	h = DoubleNode(v, NULL, h);
+	DoubleNode tempNode = DoubleNode(v, NULL, h);
+	h = &tempNode;
 }
 
 void DoubleList::AddToTail(double v){
-	t = DoubleNode(v, t, NULL);
+	DoubleNode tempNode = DoubleNode(v, t, NULL);
+	t = &tempNode;
 }
 
 bool DoubleList::RemoveHead(){
-	h = h.next;
-	delete [] h.prev;
-	h.prev = NULL
+	if (h != NULL){
+		h = h->next;
+		delete [] h->prev;
+		h->prev = NULL;
+		return true;
+	} else {
+		return false;
+	}
 }
 
 bool DoubleList::RemoveTail(){
-	t = t.prev;
-	delete [] t.next;
-	t.next = NULL;
+	if (t != NULL){
+		t = t->prev;
+		delete [] t->next;
+		t->next = NULL;
+		return true;
+	} else {
+		return false;
+	}
 }
 
 // Do not change the below.

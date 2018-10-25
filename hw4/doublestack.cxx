@@ -15,19 +15,21 @@ bool DoubleStack::IsEmpty() const
 // Implement your own member functions below.
 
 
-void Push(double elem){
-	list.append(elem);
+void DoubleStack::Push(double elem){
+	list.AddToHead(elem);
 }
 
-double Pop(){
-	return list.pop(list.size());
+double DoubleStack::Pop(){
+	assert (list.IsEmpty()); //Cannot pop an empty stack
+	return list.GetHead();
 }
 
-double Top() const{
-	return list[list.size()];
+double DoubleStack::Top() const{
+	return list.GetHead();
 }
 
-void Clear(){
+void DoubleStack::Clear(){
+	//Loop thru delete all
 }
 
 // Do not change the below.
