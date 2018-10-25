@@ -36,13 +36,11 @@ bool CharList::IsEmpty() const
     }
 
     void CharList::AddToHead(char v){
-    	CharNode tempNode = CharNode(v, NULL, h);
-    	h = &tempNode;
+    	CharNode* h = new CharNode(v, NULL, h);
     }
 
     void CharList::AddToTail(char v){
-    	CharNode tempNode = CharNode(v, t, NULL);
-    	t = &tempNode;
+    	CharNode* t = new CharNode(v, t, NULL);
     }
 
     bool CharList::RemoveHead(){
