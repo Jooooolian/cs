@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include "charstack.h"
+#include <cassert>
 
 using namespace std;
 
