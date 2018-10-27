@@ -18,8 +18,8 @@ public:
     char Top() const;
     void Clear();
 
-    friend ostream& operator<< (ostream& os, CharStack& stack);  // stream insertion operator
-    operator string();                                          // casting operator
+    friend ostream& operator<< (ostream& os, CharStack& stack);     // implemented in operator_string.o
+    operator string();                                              // implemented in operator_string.o
     //////////////////////////////////////////
     // Do not change the above prototype.
     // Add member function(s) below if you need.
@@ -30,5 +30,4 @@ public:
     ///////////////////////////////////////////
 };
 
-#endif //__CharStack__
-
+#endif //__STACK__

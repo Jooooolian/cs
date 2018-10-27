@@ -32,11 +32,11 @@ public:
     char GetTail() const;
     void AddToHead(char v);
     void AddToTail(char v);
-    bool RemoveHead();
-    bool RemoveTail();
+    char RemoveHead();      // return value of the deleted deleted node
+    char RemoveTail();      // return value of the deleted deleted node
 
-    friend ostream& operator<< (ostream& os, const CharList& list);     // stream insertion operator
-    operator string() const;                                            // casting operator
+    friend ostream& operator<< (ostream& os, const CharList& list);     // implemented in operator_string.o
+    operator string() const;                                            // implemented in operator_string.o
     ///////////////////////////////////////////
     // Do not change the above prototype.
     // Add member function(s) below if you need.

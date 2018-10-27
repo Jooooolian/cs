@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include "doublelist.h"
+#include <cassert>
 
 using namespace std;
 
@@ -40,26 +41,25 @@ void DoubleList::AddToTail(double v){
 	DoubleNode* t = new DoubleNode(v, t, NULL);
 }
 
-bool DoubleList::RemoveHead(){
-	if (h != NULL){
-		h = h->next;
-		delete [] h->prev;
-		h->prev = NULL;
-		return true;
-	} else {
-		return false;
-	}
+double DoubleList::RemoveHead(){
+	assert (h == NULL); //Cannot remove head of empty list
+
+	h = h->next;
+	double val = h->prev->value;
+	delete [] h->prev;
+	h->prev = NULL;
+	return val;
 }
 
-bool DoubleList::RemoveTail(){
-	if (t != NULL){
-		t = t->prev;
-		delete [] t->next;
-		t->next = NULL;
-		return true;
-	} else {
-		return false;
-	}
+double DoubleList::RemoveTail(){
+	
+	assert (t == NULL); //Cannot remove tail of empty list
+
+	t = t->prev;
+	double val = t->next->value;
+	delete [] t->next;
+	t->next = NULL;
+	return val;
 }
 
 // Do not change the below.

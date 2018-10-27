@@ -3,6 +3,7 @@
 #include <sstream>
 #include <cassert>
 #include <stdlib.h>
+#include <cmath>
 
 #include "charlist.h"
 #include "charstack.h"

@@ -32,11 +32,11 @@ public:
     double GetTail() const;
     void AddToHead(double v);
     void AddToTail(double v);
-    bool RemoveHead();
-    bool RemoveTail();
+    double RemoveHead();    // return value of the deleted deleted node
+    double RemoveTail();    // return value of the deleted deleted node
 
-    friend ostream& operator<< (ostream& os, const DoubleList& list);   // stream insertion operator
-    operator string() const;                                            // casting operator
+    friend ostream& operator<< (ostream& os, const DoubleList& list);   // implemented in operator_string.o
+    operator string() const;                                            // implemented in operator_string.o
     ///////////////////////////////////////////
     // Do not change the above prototype.
     // Add member function(s) below if you need.
@@ -48,3 +48,4 @@ public:
 };
 
 #endif //__TDLCharList__
+

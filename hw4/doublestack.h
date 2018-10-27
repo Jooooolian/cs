@@ -18,8 +18,8 @@ public:
     double Top() const;
     void Clear();
 
-    friend ostream& operator<< (ostream& os, DoubleStack& stack);    // stream insertion operator
-    operator string();                                       // casting operator
+    friend ostream& operator<< (ostream& os, DoubleStack& stack);   // implemented in operator_string.o
+    operator string();                                              // implemented in operator_string.o
     //////////////////////////////////////////
     // Do not change the above prototype.
     // Add member function(s) below if you need.
@@ -30,4 +30,4 @@ public:
     ///////////////////////////////////////////
 };
 
-#endif //__DoubleStack__
+#endif //__STACK__

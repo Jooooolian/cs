@@ -43,26 +43,25 @@ bool CharList::IsEmpty() const
     	CharNode* t = new CharNode(v, t, NULL);
     }
 
-    bool CharList::RemoveHead(){
-		if (h != NULL){
-			h = h->next;
-			delete [] h->prev;
-			h->prev = NULL;
-			return true;
-		} else {
-			return false;
-		}
+    char CharList::RemoveHead(){
+        assert (h == NULL); //Cannot remove head of empty list
+
+        h = h->next;
+        char val = h->prev->value;
+        delete [] h->prev;
+        h->prev = NULL;
+        return val;
     }
 
-    bool CharList::RemoveTail(){
-    	if (t != NULL){
-			t = t->prev;
-			delete [] t->next;
-			t->next = NULL;
-			return true;
-		} else {
-			return false;
-		}
+    char CharList::RemoveTail(){
+        
+        assert (t == NULL); //Cannot remove tail of empty list
+
+        t = t->prev;
+        char val = t->next->value;
+        delete [] t->next;
+        t->next = NULL;
+        return val;
     }
 
 // Do not change the below.
