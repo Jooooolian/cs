@@ -34,11 +34,15 @@ double DoubleList::GetTail() const{
 }
 
 void DoubleList::AddToHead(double v){
-	DoubleNode* h = new DoubleNode(v, NULL, h);
+	DoubleNode* newHead = new DoubleNode(v, NULL, h);
+	h->prev = newHead;
+	h = newHead;
 }
 
 void DoubleList::AddToTail(double v){
-	DoubleNode* t = new DoubleNode(v, t, NULL);
+	DoubleNode* newTail = new DoubleNode(v, t, NULL);
+	t->next = newTail;
+	t = newTail;
 }
 
 double DoubleList::RemoveHead(){
