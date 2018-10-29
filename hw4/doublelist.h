@@ -47,5 +47,5 @@ public:
     ///////////////////////////////////////////
 };
 
-#endif //__TDLCharList__
+#endif //__DoubleList__
 

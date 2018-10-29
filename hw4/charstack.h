@@ -1,6 +1,7 @@
 #ifndef __CharStack__
 #define __CharStack__
 
+
 #include <iostream>
 #include <string>
 #include "charlist.h"
@@ -30,4 +31,4 @@ public:
     ///////////////////////////////////////////
 };
 
-#endif //__STACK__
+#endif //__CharStack__

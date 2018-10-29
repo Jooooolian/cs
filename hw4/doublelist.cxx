@@ -20,29 +20,51 @@ bool DoubleList::IsEmpty() const
 // Do not change the above.
 // Implement your own member functions below.
 
+
+
 DoubleList::~DoubleList(){
-	delete [] h;
+	while (h != NULL){
+		RemoveHead();
+
+	}
+	delete [] t;
+	
 	//loop though deleting everything
 }
 
 double DoubleList::GetHead() const{
+	assert (h == NULL); //Cant get head of empty list
 	return h->value;
 }
 
 double DoubleList::GetTail() const{
+	assert (t == NULL); //Cant get tail of empty list
 	return t->value;
 }
 
 void DoubleList::AddToHead(double v){
-	DoubleNode* newHead = new DoubleNode(v, NULL, h);
-	h->prev = newHead;
-	h = newHead;
+
+	// DoubleNode* newHead;
+
+	// if (IsEmpty()){
+	// 	t = newHead;
+	// 	h = newHead;
+	// } else {
+	// 	h->prev = newHead;
+	// 	h = newHead;
+	// }
 }
 
 void DoubleList::AddToTail(double v){
-	DoubleNode* newTail = new DoubleNode(v, t, NULL);
-	t->next = newTail;
-	t = newTail;
+	// DoubleNode* newTail;
+
+	// if (IsEmpty()){
+	// 	h = newTail;
+	// 	t = newTail;
+	// } else {
+	// 	t->next = newTail;
+	// 	t = newTail;
+	// }
 }
 
 double DoubleList::RemoveHead(){

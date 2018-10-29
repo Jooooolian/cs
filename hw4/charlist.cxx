@@ -23,8 +23,10 @@ bool CharList::IsEmpty() const
 
 
     CharList::~CharList(){
-    	delete [] h;
-    	//LOOP THRU DELETE ALL
+    	while (h != NULL){
+			RemoveHead();
+		}
+		delete [] t;
     }
 
     char CharList::GetHead() const{
@@ -36,24 +38,44 @@ bool CharList::IsEmpty() const
     }
 
     void CharList::AddToHead(char v){
-    	CharNode* newHead = new CharNode(v, NULL, h);
-        h->prev = newHead;
-        h = newHead;
+    	// CharNode* newHead = new CharNode(v, NULL, h);
+
+     //    if (IsEmpty()){
+     //        t = newHead;
+     //        h = newHead;
+     //    } else {
+     //        h->prev = newHead;
+     //        h = newHead;
+     //    }
     }
 
     void CharList::AddToTail(char v){
-    	CharNode* newTail = new CharNode(v, t, NULL);
-        t->next = newTail;
-        t = newTail;
+    	// CharNode* newTail = new CharNode(v, t, NULL);
+
+     //    if (IsEmpty()){
+     //        h = newTail;
+     //        t = newTail;
+     //    } else {
+     //        t->next = newTail;
+     //        t = newTail;
+     //    }
     }
 
     char CharList::RemoveHead(){
         assert (h == NULL); //Cannot remove head of empty list
 
+        
+        char val = h->value;
         h = h->next;
-        char val = h->prev->value;
-        delete [] h->prev;
-        h->prev = NULL;
+
+        
+        if (h != NULL){
+            h->prev = NULL;
+        } else { 
+            //Only if removing the last item from the list
+            t = NULL;
+        }
+        
         return val;
     }
 
