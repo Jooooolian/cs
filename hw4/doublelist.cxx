@@ -20,7 +20,11 @@ bool DoubleList::IsEmpty() const
 // Do not change the above.
 // Implement your own member functions below.
 
-
+DoubleNode::DoubleNode(double value, DoubleNode* prev, DoubleNode* next){
+	this->value = value;
+	this->prev = prev;
+	this->next = next;
+}
 
 DoubleList::~DoubleList(){
 	while (h != NULL){

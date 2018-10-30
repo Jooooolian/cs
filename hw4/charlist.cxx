@@ -21,6 +21,12 @@ bool CharList::IsEmpty() const
 // Do not change the above.
 // Implement your own member functions below.
 
+	CharNode::CharNode(char value, CharNode* prev, CharNode* next){
+		this->value = value;
+		this->prev = prev;
+		this->next = next;
+	}
+
 
     CharList::~CharList(){
     	while (h != NULL){
@@ -38,27 +44,33 @@ bool CharList::IsEmpty() const
     }
 
     void CharList::AddToHead(char v){
-    	// CharNode* newHead = new CharNode(v, NULL, h);
+        CharNode* newHead;
+        newHead = new CharNode(v);
+        newHead->prev = NULL;
+        newHead->next = h;
 
-     //    if (IsEmpty()){
-     //        t = newHead;
-     //        h = newHead;
-     //    } else {
-     //        h->prev = newHead;
-     //        h = newHead;
-     //    }
+        if (IsEmpty()){
+            t = newHead;
+            h = newHead;
+        } else {
+            h->prev = newHead;
+            h = newHead;
+        }
     }
 
     void CharList::AddToTail(char v){
-    	// CharNode* newTail = new CharNode(v, t, NULL);
+    	CharNode* newTail;
+        newTail = new CharNode(v);
+        newTail->prev = t;
+        newTail->next = NULL;
 
-     //    if (IsEmpty()){
-     //        h = newTail;
-     //        t = newTail;
-     //    } else {
-     //        t->next = newTail;
-     //        t = newTail;
-     //    }
+        if (IsEmpty()){
+            h = newTail;
+            t = newTail;
+        } else {
+            t->next = newTail;
+            t = newTail;
+        }
     }
 
     char CharList::RemoveHead(){
