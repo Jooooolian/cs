@@ -47,9 +47,9 @@ void DoubleList::AddToHead(double v){
 	cout << "ADDING TO HEAD" << IsEmpty();
 	DoubleNode* newHead = new DoubleNode(v, NULL, h);
 
-	// if (IsEmpty()){
-	// 	t = newHead;
-	// 	h = newHead;
+	if (IsEmpty()){
+		// t = newHead;
+		h = newHead;}
 	// } else {
 	// 	h->prev = newHead;
 	// 	h = newHead;
