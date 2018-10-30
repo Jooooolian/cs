@@ -182,7 +182,7 @@ string InfixToPostfix(string infix)
         } else if (c == '(') {
             operators.Push(c);
         } else if (c == ')') {
-            while (!operators.IsEmpty() && (operators.Top() != ')')){
+            while (!operators.IsEmpty() && (operators.Top() != '(')){
                 postfix += operators.Pop();
             }
             //Pop opening parentesis 
