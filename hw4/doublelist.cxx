@@ -46,7 +46,7 @@ double DoubleList::GetTail() const{
 void DoubleList::AddToHead(double v){
 	
 	DoubleNode* newHead = new DoubleNode(v, NULL, h);
-cout << "ADDING TO HEAD" << IsEmpty() << newHead << t << h;
+cout << "ADDING TO HEAD" << IsEmpty() << newHead << endl<<t<<endl << h;
 	if (IsEmpty()){
 		// t = newHead;
 		//h = newHead;
