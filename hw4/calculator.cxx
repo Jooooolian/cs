@@ -69,7 +69,6 @@ int main()
 void TestInfixToPostfix(string infix, string expected_postfix)
 {
     string postfix = InfixToPostfix(infix);
-    cout << endl << postfix << endl << expected_postfix << endl << infix << endl;
 
     if (postfix != expected_postfix)
     {
