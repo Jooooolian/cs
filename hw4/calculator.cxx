@@ -173,14 +173,8 @@ string InfixToPostfix(string infix)
     for (unsigned int i = 0; i < infix.length()-1; i++){
         cout << postfix << endl;
         char c = infix[i];
-        if (IsOper(c)){
-            while (!operators.IsEmpty() && (operators.Top() != '(') && (Precedence(operators.Top()) >= Precedence(c))){
-                postfix += operators.Pop();
-            } 
-            
-            operators.Push(c);
-            
-        } else if (c == '(') {
+
+        if (c == '(') {
             operators.Push(c);
         } else if (c == ')') {
             while (!operators.IsEmpty() && (operators.Top() != '(')){
@@ -188,6 +182,13 @@ string InfixToPostfix(string infix)
             }
             //Pop opening parentesis 
             operators.Pop();
+        } else if (IsOper(c)){
+            while (!operators.IsEmpty() && (operators.Top() != '(') && (Precedence(operators.Top()) >= Precedence(c))){
+                postfix += operators.Pop();
+            } 
+            
+            operators.Push(c);
+            
         } else {
             postfix += c;
         }
