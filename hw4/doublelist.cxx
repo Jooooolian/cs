@@ -29,7 +29,6 @@ DoubleNode::DoubleNode(double value, DoubleNode* prev, DoubleNode* next){
 DoubleList::~DoubleList(){
 	while (h != NULL){
 		RemoveHead();
-
 	}
 	delete [] t;
 	
@@ -37,42 +36,42 @@ DoubleList::~DoubleList(){
 }
 
 double DoubleList::GetHead() const{
-	assert (h == NULL); //Cant get head of empty list
+	assert (h != NULL); //Cant get head of empty list
 	return h->value;
 }
 
 double DoubleList::GetTail() const{
-	assert (t == NULL); //Cant get tail of empty list
+	assert (t != NULL); //Cant get tail of empty list
 	return t->value;
 }
 
 void DoubleList::AddToHead(double v){
 
-	// DoubleNode* newHead;
+	DoubleNode* newHead = new DoubleNode(v, NULL, h);
 
-	// if (IsEmpty()){
-	// 	t = newHead;
-	// 	h = newHead;
-	// } else {
-	// 	h->prev = newHead;
-	// 	h = newHead;
-	// }
+	if (IsEmpty()){
+		t = newHead;
+		h = newHead;
+	} else {
+		h->prev = newHead;
+		h = newHead;
+	}
 }
 
 void DoubleList::AddToTail(double v){
-	// DoubleNode* newTail;
+	DoubleNode* newTail = new DoubleNode(v, t, NULL);
 
-	// if (IsEmpty()){
-	// 	h = newTail;
-	// 	t = newTail;
-	// } else {
-	// 	t->next = newTail;
-	// 	t = newTail;
-	// }
+	if (IsEmpty()){
+		h = newTail;
+		t = newTail;
+	} else {
+		t->next = newTail;
+		t = newTail;
+	}
 }
 
 double DoubleList::RemoveHead(){
-	assert (h == NULL); //Cannot remove head of empty list
+	assert (h != NULL); //Cannot remove head of empty list
 
 	h = h->next;
 	double val = h->prev->value;
@@ -83,7 +82,7 @@ double DoubleList::RemoveHead(){
 
 double DoubleList::RemoveTail(){
 	
-	assert (t == NULL); //Cannot remove tail of empty list
+	assert (t != NULL); //Cannot remove tail of empty list
 
 	t = t->prev;
 	double val = t->next->value;

@@ -44,10 +44,7 @@ bool CharList::IsEmpty() const
     }
 
     void CharList::AddToHead(char v){
-        CharNode* newHead;
-        newHead = new CharNode(v);
-        newHead->prev = NULL;
-        newHead->next = h;
+        CharNode* newHead = new CharNode(v, NULL, h);
 
         if (IsEmpty()){
             t = newHead;
@@ -59,10 +56,7 @@ bool CharList::IsEmpty() const
     }
 
     void CharList::AddToTail(char v){
-    	CharNode* newTail;
-        newTail = new CharNode(v);
-        newTail->prev = t;
-        newTail->next = NULL;
+    	CharNode* newTail = new CharNode(v, t, NULL);
 
         if (IsEmpty()){
             h = newTail;
@@ -74,7 +68,7 @@ bool CharList::IsEmpty() const
     }
 
     char CharList::RemoveHead(){
-        assert (h == NULL); //Cannot remove head of empty list
+        assert (h != NULL); //Cannot remove head of empty list
 
         
         char val = h->value;
@@ -93,7 +87,7 @@ bool CharList::IsEmpty() const
 
     char CharList::RemoveTail(){
         
-        assert (t == NULL); //Cannot remove tail of empty list
+        assert (t != NULL); //Cannot remove tail of empty list
 
         t = t->prev;
         char val = t->next->value;
