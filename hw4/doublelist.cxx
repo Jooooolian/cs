@@ -30,7 +30,7 @@ DoubleList::~DoubleList(){
 	while (h != NULL){
 		RemoveHead();
 	}
-	delete [] t;
+	delete t;
 }
 
 double DoubleList::GetHead() const{
@@ -46,8 +46,9 @@ double DoubleList::GetTail() const{
 void DoubleList::AddToHead(double v){
 	
 	DoubleNode* newHead = new DoubleNode(v, NULL, h);
-cout << "ADDING TO HEAD" << IsEmpty() << newHead << endl<<t<<endl << h<<endl;
+
 	if (IsEmpty()){
+		cout << "ADDING TO HEAD" << IsEmpty() << newHead << endl<<t<<endl << h<<endl;
 		h = t = newHead;
 		// t = newHead;
 		//h = newHead;
@@ -75,7 +76,7 @@ double DoubleList::RemoveHead(){
 
 	h = h->next;
 	double val = h->prev->value;
-	delete [] h->prev;
+	delete h->prev;
 	h->prev = NULL;
 	return val;
 }
@@ -85,7 +86,7 @@ double DoubleList::RemoveTail(){
 
 	t = t->prev;
 	double val = t->next->value;
-	delete [] t->next;
+	delete t->next;
 	t->next = NULL;
 	return val;
 }
