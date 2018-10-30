@@ -135,7 +135,6 @@ void TestStack()
 
 int Precedence(char ch)
 {
-    cout << endl << ch << endl;
     switch (ch)
     {
     case '(': return 0;
@@ -166,11 +165,10 @@ bool IsOper(char ch)
 string InfixToPostfix(string infix)
 {
     CharStack operators;
-    DoubleStack operands;
 
     string postfix = "";
 
-    for (int i = 0; i < infix.length()-1; i++){
+    for (unsigned int i = 0; i < infix.length()-1; i++){
         char c = infix[i];
         if (IsOper(c)){
             while (!operators.IsEmpty() && (operators.Top() != ')') && (Precedence(operators.Top()) > Precedence(c))){
@@ -207,11 +205,27 @@ double CharToDouble(char ch)
 
 double EvaluatePostfix(string postfix)
 {
-    ///////////////////////////////////////////
-    // Implement function body
-    throw "EvaluatePostfix(string postfix is not implemented.";
+    DoubleStack operands;
 
+    for (unsigned int i = 0; i < infix.length(); i++){
+        char c = postfix[i];
 
-    // Implement function body
-    ///////////////////////////////////////////
+        if (IsOper(c)){
+            double rhs = operands.Pop();
+            double lhs = operands.Pop();
+            operands.Push(Evaluate(c, lhs, rhs));
+        } else {
+            operands.Push(CharToDouble(c));
+        }
+    }
+}
+
+double Evaluate(char c, double lhs, double rhs){
+    switch (c){
+        case '+': return lhs + rhs;
+        case '-': return lhs - rhs;
+        case '*': return lhs * rhs;
+        case '/': return lhs / rhs;
+    }
+    throw "incorrect parameter in Evaluate()";
 }
