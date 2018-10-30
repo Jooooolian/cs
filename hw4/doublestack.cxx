@@ -17,12 +17,12 @@ bool DoubleStack::IsEmpty() const
 
 
 void DoubleStack::Push(double elem){
-	list.AddToHead(elem);
+	list.AddToTail(elem);
 }
 
 double DoubleStack::Pop(){
 	assert (!list.IsEmpty()); //Cannot pop an empty stack
-	return list.GetHead();
+	return list.RemoveHead();
 }
 
 double DoubleStack::Top() const{

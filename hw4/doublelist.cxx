@@ -81,7 +81,6 @@ double DoubleList::RemoveHead(){
 }
 
 double DoubleList::RemoveTail(){
-	
 	assert (t != NULL); //Cannot remove tail of empty list
 
 	t = t->prev;
