@@ -206,14 +206,23 @@ double CharToDouble(char ch)
 double EvaluatePostfix(string postfix)
 {
     DoubleStack operands;
+    double rhs;
+    double lhs;
 
     for (unsigned int i = 0; i < infix.length(); i++){
         char c = postfix[i];
 
         if (IsOper(c)){
-            double rhs = operands.Pop();
-            double lhs = operands.Pop();
-            operands.Push(Evaluate(c, lhs, rhs));
+            rhs = operands.Pop();
+            lhs = operands.Pop();
+
+            switch (c){
+                case '+': operands.Push(lhs + rhs); break;
+                case '-': operands.Push(lhs - rhs); break;
+                case '*': operands.Push(lhs * rhs); break;
+                case '/': operands.Push(lhs / rhs); break;
+            }
+
         } else {
             operands.Push(CharToDouble(c));
         }
