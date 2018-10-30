@@ -209,7 +209,7 @@ double EvaluatePostfix(string postfix)
     double rhs;
     double lhs;
 
-    for (unsigned int i = 0; i < infix.length(); i++){
+    for (unsigned int i = 0; i < postfix.length(); i++){
         char c = postfix[i];
 
         if (IsOper(c)){
@@ -227,6 +227,8 @@ double EvaluatePostfix(string postfix)
             operands.Push(CharToDouble(c));
         }
     }
+
+    return operands.Top();
 }
 
 double Evaluate(char c, double lhs, double rhs){
