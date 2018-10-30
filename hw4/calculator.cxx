@@ -83,11 +83,12 @@ void TestEvaluatePostfix(string postfix, double expected_value)
     double val = EvaluatePostfix(postfix);
     double err = abs(val - expected_value);
     double tolerance = 0.00001;
+    cout << endl << val << endl << expected_value << postfix << endl;
 
     if (err > tolerance)
     {
         ostringstream msg;
-        cout << "Eval(" << postfix << ") = " << val << " is not same to its solution " << expected_value;
+        msg << "Eval(" << postfix << ") = " << val << " is not same to its solution " << expected_value;
         throw msg.str().c_str();
     }
 }
