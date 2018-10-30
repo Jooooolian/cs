@@ -173,7 +173,7 @@ string InfixToPostfix(string infix)
         char c infix[i];
         if (IsOper(c)){
             while (!operators.IsEmpty() && (Precedence(operators.Top()) > Precedence(c)) && (operators.Top() != ')')){
-                postfix.append(operators.Pop());
+                postfix += operators.Pop();
             } 
             
             operators.Push(c);
@@ -182,17 +182,17 @@ string InfixToPostfix(string infix)
             operators.Push(c);
         } else if (c == ')') {
             while (!operators.IsEmpty() && (operators.Top() != ')')){
-                postfix.append(operators.Pop());
+                postfix += operators.Pop();
             }
             //Pop opening parentesis 
             operators.Pop();
         } else {
-            postfix.append(c);
+            postfix += c;
         }
     }
 
     while (!operators.IsEmpty()){
-        postfix.append(operators.Pop());
+        postfix += operators.Pop();
     }
 
     return postfix;
