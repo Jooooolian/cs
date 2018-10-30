@@ -89,10 +89,10 @@ double DoubleList::RemoveTail(){
 	return val;
 }
 
-void SetHead(DoubleNode* d){
+void DoubleList::SetHead(DoubleNode* d){
 	h = d;
 }
-void SetTail(DoubleNode* d){
+void DoubleList::SetTail(DoubleNode* d){
 	t = d;
 }
 
