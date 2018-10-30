@@ -164,13 +164,38 @@ bool IsOper(char ch)
 
 string InfixToPostfix(string infix)
 {
-    ///////////////////////////////////////////
-    // Implement function body
-    throw "InfixToPostfix(string infix) is not implemented.";
+    CharStack operators;
+    DoubleStack operands;
 
+    string postfix = "";
 
-    // Implement function body
-    ///////////////////////////////////////////
+    for (int i = 0; i < infix.length(); i++){
+        char c infix[i];
+        if (IsOper(c)){
+            while (!operators.IsEmpty() && (Precedence(operators.Top()) > Precedence(c)) && (operators.Top() != ')')){
+                postfix.append(operators.Pop());
+            } 
+            
+            operators.Push(c);
+            
+        } else if (c == '(') {
+            operators.Push(c);
+        } else if (c == ')') {
+            while (!operators.IsEmpty() && (operators.Top() != ')')){
+                postfix.append(operators.Pop());
+            }
+            //Pop opening parentesis 
+            operators.Pop();
+        } else {
+            postfix.append(c);
+        }
+    }
+
+    while (!operators.IsEmpty()){
+        postfix.append(operators.Pop());
+    }
+
+    return postfix;
 }
 
 double CharToDouble(char ch)
