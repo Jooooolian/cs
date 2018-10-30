@@ -21,80 +21,80 @@ bool CharList::IsEmpty() const
 // Do not change the above.
 // Implement your own member functions below.
 
-	CharNode::CharNode(char value, CharNode* prev, CharNode* next){
-		this->value = value;
-		this->prev = prev;
-		this->next = next;
+CharNode::CharNode(char value, CharNode* prev, CharNode* next){
+	this->value = value;
+	this->prev = prev;
+	this->next = next;
+}
+
+
+CharList::~CharList(){
+	while (h != NULL){
+		RemoveHead();
 	}
+	delete [] t;
+}
 
+char CharList::GetHead() const{
+	return h->value;
+}
 
-    CharList::~CharList(){
-    	while (h != NULL){
-			RemoveHead();
-		}
-		delete [] t;
+char CharList::GetTail() const{
+	return t->value;
+}
+
+void CharList::AddToHead(char v){
+    CharNode* newHead = new CharNode(v, NULL, h);
+
+    if (this.IsEmpty()){
+        t = newHead;
+        h = newHead;
+    } else {
+        h->prev = newHead;
+        h = newHead;
     }
+}
 
-    char CharList::GetHead() const{
-    	return h->value;
+void CharList::AddToTail(char v){
+	CharNode* newTail = new CharNode(v, t, NULL);
+
+    if (this.IsEmpty()){
+        h = newTail;
+        t = newTail;
+    } else {
+        t->next = newTail;
+        t = newTail;
     }
+}
 
-    char CharList::GetTail() const{
-    	return t->value;
+char CharList::RemoveHead(){
+    assert (h != NULL); //Cannot remove head of empty list
+
+    
+    char val = h->value;
+    h = h->next;
+
+    
+    if (h != NULL){
+        h->prev = NULL;
+    } else { 
+        //Only if removing the last item from the list
+        t = NULL;
     }
+    
+    return val;
+}
 
-    void CharList::AddToHead(char v){
-        CharNode* newHead = new CharNode(v, NULL, h);
+char CharList::RemoveTail(){
+    
+    assert (t != NULL); //Cannot remove tail of empty list
 
-        if (IsEmpty()){
-            t = newHead;
-            h = newHead;
-        } else {
-            h->prev = newHead;
-            h = newHead;
-        }
-    }
-
-    void CharList::AddToTail(char v){
-    	CharNode* newTail = new CharNode(v, t, NULL);
-
-        if (IsEmpty()){
-            h = newTail;
-            t = newTail;
-        } else {
-            t->next = newTail;
-            t = newTail;
-        }
-    }
-
-    char CharList::RemoveHead(){
-        assert (h != NULL); //Cannot remove head of empty list
-
-        
-        char val = h->value;
-        h = h->next;
-
-        
-        if (h != NULL){
-            h->prev = NULL;
-        } else { 
-            //Only if removing the last item from the list
-            t = NULL;
-        }
-        
-        return val;
-    }
-
-    char CharList::RemoveTail(){
-        
-        assert (t != NULL); //Cannot remove tail of empty list
-
-        t = t->prev;
-        char val = t->next->value;
-        delete [] t->next;
-        t->next = NULL;
-        return val;
-    }
+    t = t->prev;
+    char val = t->next->value;
+    delete [] t->next;
+    t->next = NULL;
+    return val;
+}
 
 // Do not change the below.
 ///////////////////////////////////////////

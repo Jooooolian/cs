@@ -122,6 +122,7 @@ void TestStack()
     int        poped;
 
     cout << "  test List  1:";                        lstr = (string)stack; str = "()"     ;    if(str != lstr) throw "not an empty stack"                                     ; cout << " success" << endl;
+    cout << stack.IsEmpty() << endl;
     cout << "  test List  2:";         stack.Push(1); lstr = (string)stack; str = "(1)"    ;    if(str != lstr) throw "elements after calling tstack.AddToHead('5') != (1)    "; cout << " success" << endl;
     cout << "  test List  3:";         stack.Push(2); lstr = (string)stack; str = "(1,2)"  ;    if(str != lstr) throw "elements after calling tstack.AddToHead('3') != (1,2)  "; cout << " success" << endl;
     cout << "  test List  4:";         stack.Push(3); lstr = (string)stack; str = "(1,2,3)";    if(str != lstr) throw "elements after calling tstack.AddToTail('7') != (1,2,3)"; cout << " success" << endl;
