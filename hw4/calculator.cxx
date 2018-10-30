@@ -171,6 +171,7 @@ string InfixToPostfix(string infix)
     string postfix = "";
 
     for (unsigned int i = 0; i < infix.length()-1; i++){
+        cout << postfix << endl;
         char c = infix[i];
         if (IsOper(c)){
             while (!operators.IsEmpty() && (operators.Top() != '(') && (Precedence(operators.Top()) >= Precedence(c))){
