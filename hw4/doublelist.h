@@ -40,8 +40,7 @@ public:
     ///////////////////////////////////////////
     // Do not change the above prototype.
     // Add member function(s) below if you need.
-    void SetHead(DoubleNode* d);
-    void SetTail(DoubleNode* d);
+    
 
 
     // Do not change the below.
