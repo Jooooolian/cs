@@ -48,12 +48,12 @@ void DoubleList::AddToHead(double v){
 	DoubleNode* newHead = new DoubleNode(v, NULL, h);
 cout << "ADDING TO HEAD" << IsEmpty() << newHead << endl<<t<<endl << h;
 	if (IsEmpty()){
-		// t = newHead;
-		//h = newHead;
+		//setTail(newHead);
+		setHead(newHead);
 	}
 	// } else {
 	// 	h->prev = newHead;
-	// 	h = newHead;
+	// 	setHead(newHead);
 	// }
 }
 
@@ -87,6 +87,13 @@ double DoubleList::RemoveTail(){
 	delete [] t->next;
 	t->next = NULL;
 	return val;
+}
+
+void SetHead(DoubleNode* d){
+	h = d;
+}
+void SetTail(DoubleNode* d){
+	t = d;
 }
 
 // Do not change the below.
