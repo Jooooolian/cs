@@ -171,7 +171,6 @@ string InfixToPostfix(string infix)
     string postfix = "";
 
     for (unsigned int i = 0; i < infix.length()-1; i++){
-        cout << postfix << endl;
         char c = infix[i];
 
         if (c == '(') {
@@ -233,14 +232,4 @@ double EvaluatePostfix(string postfix)
     }
 
     return operands.Top();
-}
-
-double Evaluate(char c, double lhs, double rhs){
-    switch (c){
-        case '+': return lhs + rhs;
-        case '-': return lhs - rhs;
-        case '*': return lhs * rhs;
-        case '/': return lhs / rhs;
-    }
-    throw "incorrect parameter in Evaluate()";
 }

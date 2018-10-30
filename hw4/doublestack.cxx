@@ -30,7 +30,7 @@ double DoubleStack::Top() const{
 }
 
 void DoubleStack::Clear(){
-	while (list.GetHead() != NULL){
+	while (!list.IsEmpty()){
 		list.RemoveHead();
 	}
 }

@@ -28,7 +28,7 @@ char CharStack::Top() const{
 }
 
 void CharStack::Clear(){
-	while (list.GetHead() != NULL){
+	while (list.IsEmpty()){
 		list.RemoveHead();
 	}
 }
