@@ -173,7 +173,7 @@ string InfixToPostfix(string infix)
     for (unsigned int i = 0; i < infix.length()-1; i++){
         char c = infix[i];
         if (IsOper(c)){
-            while (!operators.IsEmpty() && (operators.Top() != ')') && (Precedence(operators.Top()) >= Precedence(c))){
+            while (!operators.IsEmpty() && (Precedence(operators.Top()) >= Precedence(c))){
                 postfix += operators.Pop();
             } 
             
