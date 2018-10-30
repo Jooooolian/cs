@@ -31,7 +31,7 @@ double DoubleStack::Top() const{
 }
 
 void DoubleStack::Clear(){
-	while (list.h != NULL){
+	while (list.GetHead() != NULL){
 		list.RemoveHead();
 	}
 }
