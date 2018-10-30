@@ -135,6 +135,7 @@ void TestStack()
 
 int Precedence(char ch)
 {
+    cout << endl << ch << endl;
     switch (ch)
     {
     case '(': return 0;
