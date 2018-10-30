@@ -45,15 +45,15 @@ double DoubleList::GetTail() const{
 
 void DoubleList::AddToHead(double v){
 	cout << "ADDING TO HEAD";
-	DoubleNode* newHead = new DoubleNode(v, NULL, h);
+	// DoubleNode* newHead = new DoubleNode(v, NULL, h);
 
-	if (this->IsEmpty()){
-		t = newHead;
-		h = newHead;
-	} else {
-		h->prev = newHead;
-		h = newHead;
-	}
+	// if (this->IsEmpty()){
+	// 	t = newHead;
+	// 	h = newHead;
+	// } else {
+	// 	h->prev = newHead;
+	// 	h = newHead;
+	// }
 }
 
 void DoubleList::AddToTail(double v){

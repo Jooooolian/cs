@@ -17,7 +17,7 @@ bool DoubleStack::IsEmpty() const
 
 
 void DoubleStack::Push(double elem){
-	this->list.AddToHead(elem);
+	list.AddToHead(elem);
 }
 
 double DoubleStack::Pop(){
