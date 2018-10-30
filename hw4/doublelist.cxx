@@ -75,7 +75,7 @@ double DoubleList::RemoveHead(){
 	assert (h != NULL); //Cannot remove head of empty list
 
 	h = h->next;
-	double val = *h->prev->value;
+	double val = h->prev->value;
 	delete h->prev;
 	h->prev = NULL;
 	return val;
