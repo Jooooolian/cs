@@ -73,21 +73,33 @@ void DoubleList::AddToTail(double v){
 
 double DoubleList::RemoveHead(){
 	assert (h != NULL); //Cannot remove head of empty list
+	double val = h->value;
 
-	h = h->next;
-	double val = h->prev->value;
-	delete h->prev;
-	h->prev = NULL;
+	if(h == t) {
+        delete h;
+        h = t = NULL;
+    } else {
+        h = h->next;
+        delete h->prev;
+        h->prev = NULL;
+    }
+
 	return val;
 }
 
 double DoubleList::RemoveTail(){
 	assert (t != NULL); //Cannot remove tail of empty list
+	double val = t->value;
 
-	t = t->prev;
-	double val = t->next->value;
-	delete t->next;
-	t->next = NULL;
+	if(h == t) {
+        delete t;
+        h = t = NULL;
+    } else {
+        t = t->prev;
+        delete t->next;
+        t->next = NULL;
+    }
+
 	return val;
 }
 
