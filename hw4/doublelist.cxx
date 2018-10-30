@@ -47,7 +47,7 @@ void DoubleList::AddToHead(double v){
 	cout << "ADDING TO HEAD";
 	DoubleNode* newHead = new DoubleNode(v, NULL, h);
 
-	if (this.IsEmpty()){
+	if (this->IsEmpty()){
 		t = newHead;
 		h = newHead;
 	} else {
@@ -59,7 +59,7 @@ void DoubleList::AddToHead(double v){
 void DoubleList::AddToTail(double v){
 	DoubleNode* newTail = new DoubleNode(v, t, NULL);
 
-	if (this.IsEmpty()){
+	if (this->IsEmpty()){
 		h = newTail;
 		t = newTail;
 	} else {

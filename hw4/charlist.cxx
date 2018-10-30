@@ -46,7 +46,7 @@ char CharList::GetTail() const{
 void CharList::AddToHead(char v){
     CharNode* newHead = new CharNode(v, NULL, h);
 
-    if (this.IsEmpty()){
+    if (this->IsEmpty()){
         t = newHead;
         h = newHead;
     } else {
@@ -58,7 +58,7 @@ void CharList::AddToHead(char v){
 void CharList::AddToTail(char v){
 	CharNode* newTail = new CharNode(v, t, NULL);
 
-    if (this.IsEmpty()){
+    if (this->IsEmpty()){
         h = newTail;
         t = newTail;
     } else {
