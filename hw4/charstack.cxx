@@ -19,8 +19,8 @@ void CharStack::Push(char elem){
 }
 
 char CharStack::Pop(){
-	assert (list.IsEmpty()); //Cannot pop an empty stack
-	return list.GetHead();
+	assert (!list.IsEmpty()); //Cannot pop an empty stack
+	return list.RemoveHead();
 }
 
 char CharStack::Top() const{
@@ -28,7 +28,9 @@ char CharStack::Top() const{
 }
 
 void CharStack::Clear(){
-	//tbd
+	while (list.h != NULL){
+		list.RemoveHead();
+	}
 }
 
 // Do not change the below.

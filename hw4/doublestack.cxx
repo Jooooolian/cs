@@ -21,7 +21,7 @@ void DoubleStack::Push(double elem){
 }
 
 double DoubleStack::Pop(){
-	assert (list.IsEmpty()); //Cannot pop an empty stack
+	assert (!list.IsEmpty()); //Cannot pop an empty stack
 	return list.GetHead();
 }
 
@@ -30,7 +30,9 @@ double DoubleStack::Top() const{
 }
 
 void DoubleStack::Clear(){
-	//Loop thru delete all
+	while (list.h != NULL){
+		list.RemoveHead();
+	}
 }
 
 // Do not change the below.
