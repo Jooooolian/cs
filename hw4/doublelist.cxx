@@ -49,7 +49,8 @@ void DoubleList::AddToHead(double v){
 
 	if (IsEmpty()){
 		// t = newHead;
-		h = newHead;}
+		//h = newHead;
+	}
 	// } else {
 	// 	h->prev = newHead;
 	// 	h = newHead;
