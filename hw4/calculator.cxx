@@ -69,6 +69,7 @@ int main()
 void TestInfixToPostfix(string infix, string expected_postfix)
 {
     string postfix = InfixToPostfix(infix);
+    cout << endl << postfix << endl << expected_postfix << endl << infix << endl;
 
     if (postfix != expected_postfix)
     {
@@ -83,7 +84,7 @@ void TestEvaluatePostfix(string postfix, double expected_value)
     double val = EvaluatePostfix(postfix);
     double err = abs(val - expected_value);
     double tolerance = 0.00001;
-    cout << endl << val << endl << expected_value << postfix << endl;
+
 
     if (err > tolerance)
     {
