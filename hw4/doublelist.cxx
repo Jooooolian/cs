@@ -27,10 +27,10 @@ DoubleNode::DoubleNode(double value, DoubleNode* prev, DoubleNode* next){
 }
 
 DoubleList::~DoubleList(){
-	while (h != NULL){
-		RemoveHead();
-	}
-	delete t;
+	// while (h != NULL){
+	// 	RemoveHead();
+	// }
+	// delete t;
 }
 
 double DoubleList::GetHead() const{
@@ -49,7 +49,7 @@ void DoubleList::AddToHead(double v){
 
 	if (IsEmpty()){
 		cout << "ADDING TO HEAD" << IsEmpty() << newHead << endl<<t<<endl << h<<endl;
-		h = t = newHead;
+		h = newHead;
 		// t = newHead;
 		//h = newHead;
 	}
@@ -75,7 +75,7 @@ double DoubleList::RemoveHead(){
 	assert (h != NULL); //Cannot remove head of empty list
 
 	h = h->next;
-	double val = h->prev->value;
+	double val = *h->prev->value;
 	delete h->prev;
 	h->prev = NULL;
 	return val;
