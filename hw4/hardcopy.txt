@@ -1,0 +1,926 @@
+Name: Julian Bartholomee                                                        
+Email: jbp402@psu.edu                                                           
+Due Date: October 31 2018, Spooky!                                                     
+Class: CMPSC 122 - Intermediate Programming Fall 2018                           
+Professor Sukmoon - T, Th: 1:35                                                 
+                                                                                
+Description:                                                                    
+This collection of programs converts infix to postfix using stacks and doubly linked lists of char and double data types.
+
+Acknowledgement:                                                                
+I used the C++ reference to learn about the assert keyword: http://www.cplusplus.com/reference/cassert/assert/
+This was used when a user tried to pop from an empty stack etc...
+
+Compile with:
+g++ -ansi -pedantic -Wall doublelist.cxx doublestack.cxx charlist.cxx charstack.cxx calculator.cxx operator_string.o -o calculator
+
+Then run with:
+./calculator
+
+The program compiles and succesfully completes all test cases. 
+I implemented all missing member functions etc in the following: 
+doublestack.h
+calculator.cxx
+charlist.cxx
+charlist.h
+charstack.cxx
+charstack.h
+doublelist.cxx
+doublelist.h
+doublestack.cxx
+
+// Name: Julian Bartholomee                                                        
+// Email: jbp402@psu.edu                                                           
+// Due Date: October 31 2018, Spooky!                                                     
+// Class: CMPSC 122 - Intermediate Programming Fall 2018                           
+// Professor Sukmoon - T, Th: 1:35                                                 
+                                                                                
+// Description:                                                                    
+// This collection of programs converts infix to postfix using stacks and doubly linked lists of char and double data types.
+
+// Acknowledgement:                                                                
+// I used the C++ reference to learn about the assert keyword: http://www.cplusplus.com/reference/cassert/assert/
+// This was used when a user tried to pop from an empty stack etc...
+
+
+#ifndef __CharList__
+#define __CharList__
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class CharList;
+
+class CharNode
+{
+private:
+    char value;
+    CharNode* prev;
+    CharNode* next;
+public:
+    CharNode(char value, CharNode* prev = NULL, CharNode* next = NULL);
+    friend class CharList;
+};
+
+class CharList
+{
+private:
+    CharNode* h;
+    CharNode* t;
+public:
+    CharList();
+    ~CharList();
+    bool IsEmpty() const;
+    char GetHead() const;
+    char GetTail() const;
+    void AddToHead(char v);
+    void AddToTail(char v);
+    char RemoveHead();      // return value of the deleted deleted node
+    char RemoveTail();      // return value of the deleted deleted node
+
+    friend ostream& operator<< (ostream& os, const CharList& list);     // implemented in operator_string.o
+    operator string() const;                                            // implemented in operator_string.o
+    ///////////////////////////////////////////
+    // Do not change the above prototype.
+    // Add member function(s) below if you need.
+
+    // N/A
+
+    // Do not change the below.
+    ///////////////////////////////////////////
+};
+
+#endif //__CharList__
+// Name: Julian Bartholomee                                                        
+// Email: jbp402@psu.edu                                                           
+// Due Date: October 31 2018, Spooky!                                                     
+// Class: CMPSC 122 - Intermediate Programming Fall 2018                           
+// Professor Sukmoon - T, Th: 1:35                                                 
+                                                                                
+// Description:                                                                    
+// This collection of programs converts infix to postfix using stacks and doubly linked lists of char and double data types.
+
+// Acknowledgement:                                                                
+// I used the C++ reference to learn about the assert keyword: http://www.cplusplus.com/reference/cassert/assert/
+// This was used when a user tried to pop from an empty stack etc...
+
+
+#ifndef __CharStack__
+#define __CharStack__
+
+
+#include <iostream>
+#include <string>
+#include "charlist.h"
+
+using namespace std;
+
+class CharStack
+{
+private:
+    CharList list;
+public:
+    bool IsEmpty() const;
+    void Push(char elem);
+    char Pop();
+    char Top() const;
+    void Clear();
+
+    friend ostream& operator<< (ostream& os, CharStack& stack);     // implemented in operator_string.o
+    operator string();                                              // implemented in operator_string.o
+    //////////////////////////////////////////
+    // Do not change the above prototype.
+    // Add member function(s) below if you need.
+
+    //N/A
+
+    // Do not change the below.
+    ///////////////////////////////////////////
+};
+
+#endif //__CharStack__
+// Name: Julian Bartholomee                                                        
+// Email: jbp402@psu.edu                                                           
+// Due Date: October 31 2018, Spooky!                                                     
+// Class: CMPSC 122 - Intermediate Programming Fall 2018                           
+// Professor Sukmoon - T, Th: 1:35                                                 
+                                                                                
+// Description:                                                                    
+// This collection of programs converts infix to postfix using stacks and doubly linked lists of char and double data types.
+
+// Acknowledgement:                                                                
+// I used the C++ reference to learn about the assert keyword: http://www.cplusplus.com/reference/cassert/assert/
+// This was used when a user tried to pop from an empty stack etc...
+
+
+#ifndef __DoubleList__
+#define __DoubleList__
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class DoubleList;
+
+class DoubleNode
+{
+private:
+    double value;
+    DoubleNode* prev;
+    DoubleNode* next;
+public:
+    DoubleNode(double value, DoubleNode* prev = NULL, DoubleNode* next = NULL);
+    friend class DoubleList;
+};
+
+class DoubleList
+{
+private:
+    DoubleNode* h;
+    DoubleNode* t;
+public:
+    DoubleList();
+    ~DoubleList();
+    bool IsEmpty() const;
+    double GetHead() const;
+    double GetTail() const;
+    void AddToHead(double v);
+    void AddToTail(double v);
+    double RemoveHead();    // return value of the deleted deleted node
+    double RemoveTail();    // return value of the deleted deleted node
+
+    friend ostream& operator<< (ostream& os, const DoubleList& list);   // implemented in operator_string.o
+    operator string() const;                                            // implemented in operator_string.o
+    ///////////////////////////////////////////
+    // Do not change the above prototype.
+    // Add member function(s) below if you need.
+    
+    //N/A
+
+    // Do not change the below.
+    ///////////////////////////////////////////
+};
+
+#endif //__DoubleList__
+
+// Name: Julian Bartholomee                                                        
+// Email: jbp402@psu.edu                                                           
+// Due Date: October 31 2018, Spooky!                                                     
+// Class: CMPSC 122 - Intermediate Programming Fall 2018                           
+// Professor Sukmoon - T, Th: 1:35                                                 
+                                                                                
+// Description:                                                                    
+// This collection of programs converts infix to postfix using stacks and doubly linked lists of char and double data types.
+
+// Acknowledgement:                                                                
+// I used the C++ reference to learn about the assert keyword: http://www.cplusplus.com/reference/cassert/assert/
+// This was used when a user tried to pop from an empty stack etc...
+
+
+
+#ifndef __DoubleStack__
+#define __DoubleStack__
+
+#include <iostream>
+#include <string>
+#include "doublelist.h"
+
+using namespace std;
+
+class DoubleStack
+{
+private:
+    DoubleList list;
+public:
+    bool IsEmpty() const;
+    void Push(double elem);
+    double Pop();
+    double Top() const;
+    void Clear();
+
+    friend ostream& operator<< (ostream& os, DoubleStack& stack);   // implemented in operator_string.o
+    operator string();                                              // implemented in operator_string.o
+    //////////////////////////////////////////
+    // Do not change the above prototype.
+    // Add member function(s) below if you need.
+    
+    // N/A
+
+    // Do not change the below.
+    ///////////////////////////////////////////
+};
+
+#endif //__DoubleStack__
+
+                                                                            
+// Name: Julian Bartholomee                                                        
+// Email: jbp402@psu.edu                                                           
+// Due Date: October 31 2018, Spooky!                                                     
+// Class: CMPSC 122 - Intermediate Programming Fall 2018                           
+// Professor Sukmoon - T, Th: 1:35                                                 
+                                                                                
+// Description:                                                                    
+// This collection of programs converts infix to postfix using stacks and doubly linked lists of char and double data types.
+
+// Acknowledgement:                                                                
+// I used the C++ reference to learn about the assert keyword: http://www.cplusplus.com/reference/cassert/assert/
+// This was used when a user tried to pop from an empty stack etc...
+
+
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <cassert>
+#include <stdlib.h>
+#include <cmath>
+
+#include "charlist.h"
+#include "charstack.h"
+#include "doublelist.h"
+#include "doublestack.h"
+
+using namespace std;
+
+string InfixToPostfix (string infix);
+double EvaluatePostfix(string postfix);
+
+void TestList();
+void TestStack();
+void TestInfixToPostfix (string infix, string expected_postfix);
+void TestEvaluatePostfix(string postfix, double expected_value);
+
+int main()
+{
+    try
+    {
+        TestList();
+    }
+    catch (const char* message)
+    {
+        cout << "Exception in TestTList(): " << message << endl;
+        return -1;
+    }
+
+    try
+    {
+        TestStack();
+    }
+    catch (const char* message)
+    {
+        cout << "Exception in TestTStack(): " << message << endl;
+        return -1;
+    }
+
+    cout << endl << "Test Rpn() and Eval()" << endl;
+
+    cout << "  test Rpn   1:"; try { TestInfixToPostfix ("1+2;", "12+"   ); } catch (const char* message) { cout << "Exception: " << message << endl; return -1; } cout << " success" << endl;
+    cout << "  test Eval  1:"; try { TestEvaluatePostfix(        "12+", 3); } catch (const char* message) { cout << "Exception: " << message << endl; return -1; } cout << " success" << endl;
+
+    cout << "  test Rpn   2:"; try { TestInfixToPostfix ("1*2*3;", "12*3*"   ); } catch (const char* message) { cout << "Exception: " << message << endl; return -1; } cout << " success" << endl;
+    cout << "  test Eval  2:"; try { TestEvaluatePostfix(          "12*3*", 6); } catch (const char* message) { cout << "Exception: " << message << endl; return -1; } cout << " success" << endl;
+
+    cout << "  test Rpn   3:"; try { TestInfixToPostfix ("1+2*3;", "123*+"   ); } catch (const char* message) { cout << "Exception: " << message << endl; return -1; } cout << " success" << endl;
+    cout << "  test Eval  3:"; try { TestEvaluatePostfix(          "123*+", 7); } catch (const char* message) { cout << "Exception: " << message << endl; return -1; } cout << " success" << endl;
+
+    cout << "  test Rpn   4:"; try { TestInfixToPostfix ("(1+2)*3;", "12+3*"   ); } catch (const char* message) { cout << "Exception: " << message << endl; return -1; } cout << " success" << endl;
+    cout << "  test Eval  4:"; try { TestEvaluatePostfix(            "12+3*", 9); } catch (const char* message) { cout << "Exception: " << message << endl; return -1; } cout << " success" << endl;
+
+    cout << "  test Rpn   5:"; try { TestInfixToPostfix ("1+2+3*(4+5+6*7);", "12+345+67*+*+"     ); } catch (const char* message) { cout << "Exception: " << message << endl; return -1; } cout << " success" << endl;
+    cout << "  test Eval  5:"; try { TestEvaluatePostfix(                    "12+345+67*+*+", 156); } catch (const char* message) { cout << "Exception: " << message << endl; return -1; } cout << " success" << endl;
+
+    cout << "  test Rpn   6:"; try { TestInfixToPostfix ("1/(2+3)+4*(5-6/7)*8/9-0;", "123+/4567/-*8*9/+0-"                    ); } catch (const char* message) { cout << "Exception: " << message << endl; return -1; } cout << " success" << endl;
+    cout << "  test Eval  6:"; try { TestEvaluatePostfix(                            "123+/4567/-*8*9/+0-", 14.930158730158730); } catch (const char* message) { cout << "Exception: " << message << endl; return -1; } cout << " success" << endl;
+
+    cout << endl << "Congratulation!" << endl;
+    cout << "You successfully passed all tests!" << endl;
+}
+
+void TestInfixToPostfix(string infix, string expected_postfix)
+{
+    string postfix = InfixToPostfix(infix);
+
+    if (postfix != expected_postfix)
+    {
+        ostringstream os;
+        os << "Rpn(" << infix << ") = " << postfix << " is not same to its solution " << expected_postfix;
+        throw os.str().c_str();
+    }
+}
+
+void TestEvaluatePostfix(string postfix, double expected_value)
+{
+    double val = EvaluatePostfix(postfix);
+    double err = abs(val - expected_value);
+    double tolerance = 0.00001;
+
+
+    if (err > tolerance)
+    {
+        ostringstream msg;
+        msg << "Eval(" << postfix << ") = " << val << " is not same to its solution " << expected_value;
+        throw msg.str().c_str();
+    }
+}
+
+void TestList()
+{
+    cout << endl << "Test CharList class" << endl;
+
+    CharList list;
+    string     str;
+    string     lstr;
+
+    cout << "  test List  1:"; list.AddToHead('e'); lstr = (string)list; str = "(e)"        ;   if(str != lstr) throw "elements after calling list.AddToHead('e') != (\"e\")        "; cout << " success" << endl;
+    cout << "  test List  2:"; list.AddToHead('d'); lstr = (string)list; str = "(d,e)"      ;   if(str != lstr) throw "elements after calling list.AddToHead('d') != (\"d,e\")      "; cout << " success" << endl;
+    cout << "  test List  3:"; list.AddToTail('f'); lstr = (string)list; str = "(d,e,f)"    ;   if(str != lstr) throw "elements after calling list.AddToTail('f') != (\"d,e,f\")    "; cout << " success" << endl;
+    cout << "  test List  4:"; list.AddToTail('g'); lstr = (string)list; str = "(d,e,f,g)"  ;   if(str != lstr) throw "elements after calling list.AddToTail('g') != (\"d,e,f,g\")  "; cout << " success" << endl;
+    cout << "  test List  5:"; list.AddToHead('b'); lstr = (string)list; str = "(b,d,e,f,g)";   if(str != lstr) throw "elements after calling list.AddToHead('b') != (\"b,d,e,f,g\")"; cout << " success" << endl;
+    cout << "  test List  6:"; list.RemoveHead()  ; lstr = (string)list; str = "(d,e,f,g)"  ;   if(str != lstr) throw "elements after calling list.RemoveHead()   != (\"d,e,f,g\")  "; cout << " success" << endl;
+    cout << "  test List  7:"; list.RemoveTail()  ; lstr = (string)list; str = "(d,e,f)"    ;   if(str != lstr) throw "elements after calling list.RemoveTail()   != (\"d,e,f\")    "; cout << " success" << endl;
+    cout << "  test List  8:"; list.RemoveHead()  ; lstr = (string)list; str = "(e,f)"      ;   if(str != lstr) throw "elements after calling list.RemoveHead()   != (\"e,f\")      "; cout << " success" << endl;
+    cout << "  test List  9:"; list.RemoveTail()  ; lstr = (string)list; str = "(e)"        ;   if(str != lstr) throw "elements after calling list.RemoveTail()   != (\"e\")        "; cout << " success" << endl;
+    cout << "  test List 10:"; list.RemoveHead()  ; lstr = (string)list; str = "()"         ;   if(str != lstr) throw "elements after calling list.RemoveHead()   != (\"\")         "; cout << " success" << endl;
+}
+
+void TestStack()
+{
+    cout << endl << "Test DoubleStack class" << endl;
+
+    DoubleStack stack;
+    string     str;
+    string     lstr;
+    int        poped;
+
+    cout << "  test List  1:";                        lstr = (string)stack; str = "()"     ;    if(str != lstr) throw "not an empty stack"                                     ; cout << " success" << endl;
+    cout << "  test List  2:";         stack.Push(1); lstr = (string)stack; str = "(1)"    ;    if(str != lstr) throw "elements after calling tstack.AddToHead('5') != (1)    "; cout << " success" << endl;
+    cout << "  test List  3:";         stack.Push(2); lstr = (string)stack; str = "(1,2)"  ;    if(str != lstr) throw "elements after calling tstack.AddToHead('3') != (1,2)  "; cout << " success" << endl;
+    cout << "  test List  4:";         stack.Push(3); lstr = (string)stack; str = "(1,2,3)";    if(str != lstr) throw "elements after calling tstack.AddToTail('7') != (1,2,3)"; cout << " success" << endl;
+    cout << "  test List  5:"; poped = stack.Pop();   lstr = (string)stack; str = "(1,2)"  ;    if(str != lstr) throw "elements after calling tstack.RemoveHead()   != (1,2)  "; cout << " success" << endl;
+    cout << "  test List  6:";                                                                  if(poped != 3 ) throw "returned element of    tstack.RemoveHead()   != 3      "; cout << " success" << endl;
+    cout << "  test List  7:"; poped = stack.Pop();   lstr = (string)stack; str = "(1)"    ;    if(str != lstr) throw "elements after calling tstack.RemoveTail()   != (1)    "; cout << " success" << endl;
+    cout << "  test List  8:";                                                                  if(poped != 2 ) throw "returned element of    tstack.RemoveHead()   != 2      "; cout << " success" << endl;
+    cout << "  test List  9:"; poped = stack.Pop();   lstr = (string)stack; str = "()"     ;    if(str != lstr) throw "elements after calling tstack.RemoveHead()   != ()     "; cout << " success" << endl;
+    cout << "  test List 10:";                                                                  if(poped != 1 ) throw "returned element of    tstack.RemoveHead()   != 1      "; cout << " success" << endl;
+}
+
+int Precedence(char ch)
+{
+    switch (ch)
+    {
+    case '(': return 0;
+    case ')': return 0;
+    case '+': return 1;
+    case '-': return 1;
+    case '*': return 2;
+    case '/': return 2;
+    }
+    throw "incorrect parameter in Precedence()";
+}
+
+bool IsOper(char ch)
+{
+    switch (ch)
+    {
+    case ';': return true;
+    case '(': return true;
+    case ')': return true;
+    case '+': return true;
+    case '-': return true;
+    case '*': return true;
+    case '/': return true;
+    }
+    return false;
+}
+
+string InfixToPostfix(string infix)
+{
+    //Declare char stack
+    CharStack operators;
+
+    //Empty string which will hold the final postfix value
+    string postfix = "";
+
+    //Loop over every character
+    for (unsigned int i = 0; i < infix.length(); i++){
+        char c = infix[i];
+
+        //Look for an opening parentesis, and push it to the stack. We will use it later to determine when to stop POP()ing
+        if (c == '(') {
+            operators.Push(c);
+
+        } else if (c == ')') { 
+            //Look for the closing parentesis
+            //Then pop() from the stack until we find its counterpart '('
+            while (!operators.IsEmpty() && (operators.Top() != '(')){
+                //Add pop()'d element to postfix
+                postfix += operators.Pop();
+            }
+            //Pop remaining opening parentesis in stack, dont add it to postfix expression
+            operators.Pop();
+
+        } else if (c == ';') {
+            //Sentinal encountered, escape loop (even though it should only encounter this on last iteration)
+            break;
+
+        } else if (IsOper(c)){
+            //If the char is an operator, and has lower precedence than the top of the stack, pop() until empty or closing parentesis found.
+            while (!operators.IsEmpty() && (operators.Top() != '(') && (Precedence(operators.Top()) >= Precedence(c))){
+                postfix += operators.Pop();
+            } 
+            
+            //Then push the operator to the stack (happens regardless of precedence)
+            operators.Push(c);
+            
+        } else {
+            //the char c is a number. Add it to the postfix expression
+            postfix += c;
+        }
+    }
+
+    //Finally, empty the stack into the postfix expression
+    while (!operators.IsEmpty()){
+        postfix += operators.Pop();
+    }
+
+    //Return the postfix expression
+    return postfix;
+}
+
+double CharToDouble(char ch)
+{
+    assert(('0' <= ch) && (ch <= '9'));
+    return (ch - '0');
+}
+
+double EvaluatePostfix(string postfix)
+{
+    //Declare stack to hold doubles
+    DoubleStack operands;
+
+    //Declare right hand side and left hand side vars for each operation
+    double rhs;
+    double lhs;
+
+    //Loop through every character in the postfix expression
+    for (unsigned int i = 0; i < postfix.length(); i++){
+        //Select char c from postfix
+        char c = postfix[i];
+
+        //If we encounter an operator,
+        if (IsOper(c)){
+            //Determine rhs and lhs from stack pop() order
+            rhs = operands.Pop();
+            lhs = operands.Pop();
+
+            //Push the result of the operation to the stack for later
+            switch (c){
+                case '+': operands.Push(lhs + rhs); break;
+                case '-': operands.Push(lhs - rhs); break;
+                case '*': operands.Push(lhs * rhs); break;
+                case '/': operands.Push(lhs / rhs); break;
+            }
+
+        } else {
+            //We encountered a double, convert from char to double then push it to the stack
+            operands.Push(CharToDouble(c));
+        }
+    }
+
+    //Return the only number left in the stack.
+    return operands.Top();
+}
+// Name: Julian Bartholomee                                                        
+// Email: jbp402@psu.edu                                                           
+// Due Date: October 31 2018, Spooky!                                                     
+// Class: CMPSC 122 - Intermediate Programming Fall 2018                           
+// Professor Sukmoon - T, Th: 1:35                                                 
+                                                                                
+// Description:                                                                    
+// This collection of programs converts infix to postfix using stacks and doubly linked lists of char and double data types.
+
+// Acknowledgement:                                                                
+// I used the C++ reference to learn about the assert keyword: http://www.cplusplus.com/reference/cassert/assert/
+// This was used when a user tried to pop from an empty stack etc...
+
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <cassert>
+#include <stdlib.h>
+#include "charlist.h"
+
+using namespace std;
+
+CharList::CharList()
+{
+    h = t = NULL;
+}
+
+bool CharList::IsEmpty() const
+{
+    return (h == NULL);
+}
+
+///////////////////////////////////////////
+// Do not change the above.
+// Implement your own member functions below.
+
+//Constructor for CharNode
+CharNode::CharNode(char value, CharNode* prev, CharNode* next){
+	this->value = value;
+	this->prev = prev;
+	this->next = next;
+}
+
+
+//Destructor for CharList
+CharList::~CharList(){
+	while (h != NULL){
+		RemoveHead();
+	}
+	delete t;
+}
+
+//DLL Head Getter
+char CharList::GetHead() const{
+    assert (h != NULL); //Cant get head of empty list
+	return h->value;
+}
+
+//DLL Tail Getter
+char CharList::GetTail() const{
+    assert (t != NULL); //Cant get tail of empty list
+	return t->value;
+}
+
+//Create new node and insert it at the head
+void CharList::AddToHead(char v){
+    CharNode* newHead = new CharNode(v, NULL, h);
+
+    //Handle cases differently
+    if (IsEmpty()){
+        //If empty, h and t both point to the only item in the dll
+        t = newHead;
+        h = newHead;
+    } else {
+        //Else, set paths to newHead
+        h->prev = newHead;
+        h = newHead;
+    }
+}
+
+//Create new node and insert it at the tail
+void CharList::AddToTail(char v){
+	CharNode* newTail = new CharNode(v, t, NULL);
+
+    //Handle cases differently
+    if (IsEmpty()){
+        //If empty, h and t both point to the only item in the dll
+        h = newTail;
+        t = newTail;
+    } else {
+        //Else, set paths to newHead
+        t->next = newTail;
+        t = newTail;
+    }
+}
+
+char CharList::RemoveHead(){
+    assert (h != NULL); //Cannot remove head of empty list
+
+    //Store val in temp variable
+    char val = h->value;
+
+    //If there is one item in the list
+    if(h == t) {
+        //Delete it
+        delete h;
+        h = t = NULL;
+    } else {
+        //Else, Delete head and fix pointers
+        h = h->next;
+        delete h->prev;
+        h->prev = NULL;
+    }
+
+    return val;
+}
+
+char CharList::RemoveTail(){
+    assert (t != NULL); //Cannot remove tail of empty list
+
+    //Store val in temp variable
+    char val = t->value;
+
+    //If there is one item in the list
+    if(h == t) {
+        //Delete it
+        delete t;
+        h = t = NULL;
+    } else {
+        //Else, Delete head and fix pointers
+        t = t->prev;
+        delete t->next;
+        t->next = NULL;
+    }
+
+    return val;
+}
+
+// Do not change the below.
+///////////////////////////////////////////
+// Name: Julian Bartholomee                                                        
+// Email: jbp402@psu.edu                                                           
+// Due Date: October 31 2018, Spooky!                                                     
+// Class: CMPSC 122 - Intermediate Programming Fall 2018                           
+// Professor Sukmoon - T, Th: 1:35                                                 
+                                                                                
+// Description:                                                                    
+// This collection of programs converts infix to postfix using stacks and doubly linked lists of char and double data types.
+
+// Acknowledgement:                                                                
+// I used the C++ reference to learn about the assert keyword: http://www.cplusplus.com/reference/cassert/assert/
+// This was used when a user tried to pop from an empty stack etc...
+
+
+#include <string>
+#include <iostream>
+#include <sstream>
+#include "charstack.h"
+#include <cassert>
+
+using namespace std;
+
+bool CharStack::IsEmpty() const{
+    return list.IsEmpty();
+}
+
+///////////////////////////////////////////
+// Do not change the above.
+// Implement your own member functions below.
+
+// Add element to stack, using dll add to head
+void CharStack::Push(char elem){
+	list.AddToHead(elem);
+}
+
+// Remove element from stack and return it. Using dll, get Head
+char CharStack::Pop(){
+	assert (!list.IsEmpty()); //Cannot pop an empty stack
+	return list.RemoveHead();
+}
+
+// Get top of the stack, using dll read only get Head
+char CharStack::Top() const{
+	return list.GetHead();
+}
+
+//Empty the stack.
+void CharStack::Clear(){
+	while (list.IsEmpty()){
+		list.RemoveHead();
+	}
+}
+
+// Do not change the below.
+///////////////////////////////////////////
+// Name: Julian Bartholomee                                                        
+// Email: jbp402@psu.edu                                                           
+// Due Date: October 31 2018, Spooky!                                                     
+// Class: CMPSC 122 - Intermediate Programming Fall 2018                           
+// Professor Sukmoon - T, Th: 1:35                                                 
+                                                                                
+// Description:                                                                    
+// This collection of programs converts infix to postfix using stacks and doubly linked lists of char and double data types.
+
+// Acknowledgement:                                                                
+// I used the C++ reference to learn about the assert keyword: http://www.cplusplus.com/reference/cassert/assert/
+// This was used when a user tried to pop from an empty stack etc...
+
+
+#include <string>
+#include <iostream>
+#include <sstream>
+#include "doublelist.h"
+#include <cassert>
+
+using namespace std;
+
+DoubleList::DoubleList()
+{
+    h = t = NULL;
+}
+
+bool DoubleList::IsEmpty() const
+{
+    return (h == NULL);
+}
+
+///////////////////////////////////////////
+// Do not change the above.
+// Implement your own member functions below.
+
+//Constructor for DoubleNode
+DoubleNode::DoubleNode(double value, DoubleNode* prev, DoubleNode* next){
+	this->value = value;
+	this->prev = prev;
+	this->next = next;
+}
+
+//Destructor for DoubleList
+DoubleList::~DoubleList(){
+	while (h != NULL){
+		RemoveHead();
+	}
+	delete t;
+}
+
+//Getter for dll head value
+double DoubleList::GetHead() const{
+	assert (h != NULL); //Cant get head of empty list
+	return h->value;
+}
+
+//Getter for dll tail value
+double DoubleList::GetTail() const{
+	assert (t != NULL); //Cant get tail of empty list
+	return t->value;
+}
+
+//Add to the head of the dll
+void DoubleList::AddToHead(double v){
+	//Create node
+	DoubleNode* newHead = new DoubleNode(v, NULL, h);
+
+
+	if (IsEmpty()){
+		//First item added to the list
+		h = newHead;
+		t = newHead;
+	} else {
+		//All other items handled here
+		h->prev = newHead;
+		h = newHead;
+	}
+}
+
+//Add to the tail of the dll
+void DoubleList::AddToTail(double v){
+	//Create node
+	DoubleNode* newTail = new DoubleNode(v, t, NULL);
+
+
+	if (IsEmpty()){
+		//Handles the first item to be inserted
+		h = newTail;
+		t = newTail;
+	} else {
+		//Handles all other items inserted
+		t->next = newTail;
+		t = newTail;
+	}
+}
+
+//Removes the head of the dll, and returns the value
+double DoubleList::RemoveHead(){
+	assert (h != NULL); //Cannot remove head of empty list
+
+	//Store value in temp variable
+	double val = h->value;
+
+	if(h == t) {
+		//Handles if one item is left
+        delete h;
+        h = t = NULL;
+    } else {
+    	//Handles all items except the last one
+        h = h->next;
+        delete h->prev;
+        h->prev = NULL;
+    }
+
+	return val;
+}
+
+//Removes the tail of the dll, and returns the value
+double DoubleList::RemoveTail(){
+	assert (t != NULL); //Cannot remove tail of empty list
+
+	//Store value in temp variable
+	double val = t->value;
+
+	if(h == t) {
+		//Handles if one item is left
+        delete t;
+        h = t = NULL;
+    } else {
+    	//Handles all items except the last one
+        t = t->prev;
+        delete t->next;
+        t->next = NULL;
+    }
+
+	return val;
+}
+
+// Do not change the below.
+///////////////////////////////////////////
+// Name: Julian Bartholomee                                                        
+// Email: jbp402@psu.edu                                                           
+// Due Date: October 31 2018, Spooky!                                                     
+// Class: CMPSC 122 - Intermediate Programming Fall 2018                           
+// Professor Sukmoon - T, Th: 1:35                                                 
+                                                                                
+// Description:                                                                    
+// This collection of programs converts infix to postfix using stacks and doubly linked lists of char and double data types.
+
+// Acknowledgement:                                                                
+// I used the C++ reference to learn about the assert keyword: http://www.cplusplus.com/reference/cassert/assert/
+// This was used when a user tried to pop from an empty stack etc...
+
+
+#include <string>
+#include <iostream>
+#include <sstream>
+#include "doublestack.h"
+#include <cassert>
+
+using namespace std;
+
+bool DoubleStack::IsEmpty() const
+{
+    return list.IsEmpty();
+}
+
+///////////////////////////////////////////
+// Do not change the above.
+// Implement your own member functions below.
+
+//PUSH element to top of stack, using dll addToHead()
+void DoubleStack::Push(double elem){
+	list.AddToHead(elem);
+}
+
+//Remove top of stack and return it using removeHead()
+double DoubleStack::Pop(){
+	assert (!list.IsEmpty()); //Cannot pop an empty stack
+	return list.RemoveHead();
+}
+
+//Read only getter for the value at the top of the stack
+double DoubleStack::Top() const{
+	return list.GetHead();
+}
+
+//Clear the stack of all nodes
+void DoubleStack::Clear(){
+	while (!list.IsEmpty()){
+		list.RemoveHead();
+	}
+}
+
+// Do not change the below.
+///////////////////////////////////////////
