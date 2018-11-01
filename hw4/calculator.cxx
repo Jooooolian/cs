@@ -1,3 +1,19 @@
+
+                                                                            
+// Name: Julian Bartholomee                                                        
+// Email: jbp402@psu.edu                                                           
+// Due Date: October 31 2018, Spooky!                                                     
+// Class: CMPSC 122 - Intermediate Programming Fall 2018                           
+// Professor Sukmoon - T, Th: 1:35                                                 
+                                                                                
+// Description:                                                                    
+// This collection of programs converts infix to postfix using stacks and doubly linked lists of char and double data types.
+
+// Acknowledgement:                                                                
+// I used the C++ reference to learn about the assert keyword: http://www.cplusplus.com/reference/cassert/assert/
+// This was used when a user tried to pop from an empty stack etc...
+
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -165,37 +181,55 @@ bool IsOper(char ch)
 
 string InfixToPostfix(string infix)
 {
+    //Declare char stack
     CharStack operators;
 
+    //Empty string which will hold the final postfix value
     string postfix = "";
 
-    for (unsigned int i = 0; i < infix.length()-1; i++){
+    //Loop over every character
+    for (unsigned int i = 0; i < infix.length(); i++){
         char c = infix[i];
 
+        //Look for an opening parentesis, and push it to the stack. We will use it later to determine when to stop POP()ing
         if (c == '(') {
             operators.Push(c);
-        } else if (c == ')') {
+
+        } else if (c == ')') { 
+            //Look for the closing parentesis
+            //Then pop() from the stack until we find its counterpart '('
             while (!operators.IsEmpty() && (operators.Top() != '(')){
+                //Add pop()'d element to postfix
                 postfix += operators.Pop();
             }
-            //Pop opening parentesis 
+            //Pop remaining opening parentesis in stack, dont add it to postfix expression
             operators.Pop();
+
+        } else if (c == ';') {
+            //Sentinal encountered, escape loop (even though it should only encounter this on last iteration)
+            break;
+
         } else if (IsOper(c)){
+            //If the char is an operator, and has lower precedence than the top of the stack, pop() until empty or closing parentesis found.
             while (!operators.IsEmpty() && (operators.Top() != '(') && (Precedence(operators.Top()) >= Precedence(c))){
                 postfix += operators.Pop();
             } 
             
+            //Then push the operator to the stack (happens regardless of precedence)
             operators.Push(c);
             
         } else {
+            //the char c is a number. Add it to the postfix expression
             postfix += c;
         }
     }
 
+    //Finally, empty the stack into the postfix expression
     while (!operators.IsEmpty()){
         postfix += operators.Pop();
     }
 
+    //Return the postfix expression
     return postfix;
 }
 
@@ -207,17 +241,25 @@ double CharToDouble(char ch)
 
 double EvaluatePostfix(string postfix)
 {
+    //Declare stack to hold doubles
     DoubleStack operands;
+
+    //Declare right hand side and left hand side vars for each operation
     double rhs;
     double lhs;
 
+    //Loop through every character in the postfix expression
     for (unsigned int i = 0; i < postfix.length(); i++){
+        //Select char c from postfix
         char c = postfix[i];
 
+        //If we encounter an operator,
         if (IsOper(c)){
+            //Determine rhs and lhs from stack pop() order
             rhs = operands.Pop();
             lhs = operands.Pop();
 
+            //Push the result of the operation to the stack for later
             switch (c){
                 case '+': operands.Push(lhs + rhs); break;
                 case '-': operands.Push(lhs - rhs); break;
@@ -226,9 +268,11 @@ double EvaluatePostfix(string postfix)
             }
 
         } else {
+            //We encountered a double, convert from char to double then push it to the stack
             operands.Push(CharToDouble(c));
         }
     }
 
+    //Return the only number left in the stack.
     return operands.Top();
 }

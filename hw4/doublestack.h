@@ -1,3 +1,18 @@
+// Name: Julian Bartholomee                                                        
+// Email: jbp402@psu.edu                                                           
+// Due Date: October 31 2018, Spooky!                                                     
+// Class: CMPSC 122 - Intermediate Programming Fall 2018                           
+// Professor Sukmoon - T, Th: 1:35                                                 
+                                                                                
+// Description:                                                                    
+// This collection of programs converts infix to postfix using stacks and doubly linked lists of char and double data types.
+
+// Acknowledgement:                                                                
+// I used the C++ reference to learn about the assert keyword: http://www.cplusplus.com/reference/cassert/assert/
+// This was used when a user tried to pop from an empty stack etc...
+
+
+
 #ifndef __DoubleStack__
 #define __DoubleStack__
 
@@ -24,7 +39,7 @@ public:
     // Do not change the above prototype.
     // Add member function(s) below if you need.
     
-
+    // N/A
 
     // Do not change the below.
     ///////////////////////////////////////////

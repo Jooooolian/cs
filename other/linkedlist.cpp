@@ -1,18 +1,24 @@
 using namespace std;
 
-struct node {
-    int data;
-    node *next_node;
+class Node {
+	private:
+    	int data;
+   		node *next;
+   	public:
+   		Node();
+   		Node(int d, Node* n);
+
+   	friend class LinkedList;
 };
 
 class LinkedList(){
 	private:
-    	node *start_node, *end_node;
+    	node *head, *tail;
 
     public:
 	    LinkedList(){
-	      start_node=NULL;
-	      end_node=NULL;
+	      head=NULL;
+	      tail=NULL;
 	    }
 	    LinkedList(){}
 	    ~LinkedList(){}
@@ -20,15 +26,32 @@ class LinkedList(){
 	    void newNode(int i){
 	    	node *newNode = new node;
 	    	newNode->data = i;
-	    	newNode->next_node = NULL;
+	    	newNode->next = NULL;
 
-	    	if (start_node == NULL){
-	    		start_node = newNode;
-	    		end_node = newNode;
+	    	if (head == NULL){
+	    		head = newNode;
+	    		tail = newNode;
 	    		newNode = NULL;
 	    	} else {
-	    		end_node->next = newNode;
-	    		end_node = newNode;
+	    		tail->next = newNode;
+	    		tail = newNode;
+	    	}
+	    }
+
+	    void addToHead(int d){
+
+	    }
+
+	    void removeHead(){
+	    	
+	    }
+
+	    void addToTail(int d){
+	    	if (isEmpty()){
+	    		tail = head = new Node(d);
+	    	} else {
+	    		tail->next = new Node(d);
+	    		tail = tail->next;
 	    	}
 	    }
 };
