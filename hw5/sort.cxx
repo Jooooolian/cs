@@ -1,3 +1,12 @@
+// Name: Julian Bartholomee                                                        
+// Email: jbp402@psu.edu                                                           
+// Due Date: December 10 2018                                                     
+// Class: CMPSC 122 - Intermediate Programming Fall 2018                           
+// Professor Sukmoon - T, Th: 1:35                                                 
+                                                                                
+// Description:                                                                    
+// This program is a test for BST.h, I implemented a selection sort algorithm here.
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -420,6 +429,28 @@ void SelectionSort(double* arr, int n)
     ///////////////////////////////////////////
     // Do not change the above.
     // Implement function body
+
+    int minimum_index;
+    int temp;
+
+    //Outer loop iterates over array of N elements
+    for (int i=0; i < n-1; i++){
+        minimum_index = i;
+
+        //Find index of minimum element
+        for (int j=i+1; j < n; j++){
+            if (arr[j] < arr[minimum_index]){
+               minimum_index=j;
+            }
+        }
+
+        //Swap if our current element is NOT the smallest
+        if (minimum_index != i){
+             temp = arr[i];
+             arr[i] = arr[minimum_index];
+             arr[minimum_index] = temp;
+        }
+    }
 
     // Implement function body
     ///////////////////////////////////////////
